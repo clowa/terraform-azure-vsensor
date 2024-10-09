@@ -44,7 +44,7 @@ resource "azurerm_nat_gateway_public_ip_association" "natgw_public_ip_associatio
 
 resource "azurerm_subnet" "vsensor_subnet" {
   count                                         = local.subnet_enable ? 1 : 0
-  name                                          = "${local.deployment_id}-vsensor-subnet"
+  name                                          = "${local.deployment_id}-subnet"
   resource_group_name                           = local.vnet_rg.name
   virtual_network_name                          = local.vnet.name
   address_prefixes                              = [var.subnet_cidr]

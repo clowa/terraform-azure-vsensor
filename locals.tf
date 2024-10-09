@@ -7,7 +7,7 @@ locals {
   # If we are generating a new VNet, we must be generating a new subnet. Otherwise, we may be using or generating a new subnet.
   subnet_enable = local.vnet_enable ? true : length(var.subnet_name) == 0
   subnet        = local.subnet_enable ? azurerm_subnet.vsensor_subnet[0] : data.azurerm_subnet.vsensor_subnet_existing[0]
-  vmss_name     = "${local.deployment_id}-vsensor-vmss"
+  vmss_name     = "${local.deployment_id}-vmss"
   rg_enable     = length(var.rg_name) == 0
   rg            = local.rg_enable ? azurerm_resource_group.rg[0] : data.azurerm_resource_group.rg_existing[0]
   # If user provides a location, use that. If not, use the location of the resource group provided.
