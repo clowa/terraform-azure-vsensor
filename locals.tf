@@ -33,7 +33,9 @@ locals {
   pcaps_storage_enable = var.lifecycle_pcaps_blob_days > 0
   pcaps_name           = lower("${local.deployment_id}-pcaps")
   # Storage Account must be lowercase letters and numbers only and must be < 25 characters.
-  pcaps_sa_name = lower(join("", [substr(local.deployment_id, 0, 15), substr(random_uuid.pcap_uuid.result, 0, 4), "pcaps"]))
+  # Trim prefix to 11 characters to ensure we don't exceed the 24 character limit.
+  # Skip CAF resource abbreviation "st" due to the strict character limit.
+  pcaps_sa_name = replace(lower(join("-", [substr(local.deployment_id, 0, 19), "pcaps"])), "-", "")
 
   data_collection_name = "${local.deployment_id}-dcr"
 

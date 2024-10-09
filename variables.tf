@@ -10,7 +10,7 @@ variable "short_id" {
   description = "A short (upto 20 character alphanumeric) string to prefix resource names by (where available)."
 
   validation {
-    condition     = length(var.short_id) > 0 && length(var.short_id) <= 20 && can(regex("^[a-zA-Z0-9]+$", var.short_id))
+    condition     = length(var.short_id) > 0 && length(var.short_id) <= 20 && can(regex("^[a-zA-Z0-9-]+$", var.short_id))
     error_message = "The short ID must be upto 20 alphanumeric characters."
   }
 }
