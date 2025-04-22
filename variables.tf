@@ -37,7 +37,7 @@ variable "vnet_name" {
 
 variable "vnet_rg" {
   type        = string
-  description = "The Resource Group the existing Virtual Network is deployed in. Default is same RG."
+  description = "The Resource Group name that the existing Virtual Network is deployed in."
   default     = null
 }
 
@@ -121,7 +121,7 @@ variable "terraform_cidrs" {
 variable "instance_size" {
   type        = string
   description = "The VM size. Check the Darktrace customer portal for more information about the vSensor Virtual Hardware requirements."
-  default     = "Standard_D2_v3"
+  default     = "Standard_D2s_v3"
 }
 
 variable "min_size" {
